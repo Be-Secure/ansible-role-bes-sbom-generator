@@ -14,7 +14,7 @@
 - name: Updating to latest version
   become: yes
   unarchive:
-    src: "{{ update_link.stdout }}"
+    src: "{{update_link.stdout}}"
     dest: /opt/
     remote_src: yes
   when: '"{{update_link.stdout}}" != "{{release_link}}/{{latest}}"'
