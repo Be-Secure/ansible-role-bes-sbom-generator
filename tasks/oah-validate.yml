@@ -13,10 +13,6 @@
     msg: "spdx-sbom-generator is not installed"
   when: not sbom_file_path.stat.exists
 
-- name: End execution of role
-  meta: end_role
-  when: not sbom_file_path.stat.exists
-
 - name: Spdx-generator installed
   debug:
     msg: sbom-spdx-generator is installed
