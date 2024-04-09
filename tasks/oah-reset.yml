@@ -1,5 +1,3 @@
----
-
 - name: Checking installation
   include_tasks: "tasks/oah-validate.yml"
 
