@@ -1,7 +1,22 @@
 ---
+- name: Check if spdx-sbom-generator file exists
+  stat:
+    path: "{{ spdx_sbom_path }}/spdx-sbom-generator"
+  register: sbom_file
+
+- name: Display file existence status
+  debug:
+    msg: "spdx-sbom-generator is not installed"
+  when: not sbom_file.stat.exists
+
+- name: End execution of role
+  meta: end_role
+  when: not sbom_file.stat.exists
 
 - name: Removing spdx-generator
   become: yes
   file:
     path: /opt/spdx-sbom-generator
     state: absent
+  when: sbom_file.stat.exists
+  

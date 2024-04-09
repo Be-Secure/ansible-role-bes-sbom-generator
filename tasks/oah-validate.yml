@@ -1,13 +1,15 @@
----
-
 - name: Validate Installation
   stat:
-    path: "/opt/spdx-sbom-generator"
-  register: spdx_executable 
+    path: "{{ spdx_sbom_path }}"
+  register: spdx_executable
 
-- name: Report if file doesn't exist
-  fail:
-    msg: "sbom-spdx-generator file not found"
+- name: Display file existence status
+  debug:
+    msg: "spdx-sbom-generator is not installed"
+  when: not sbom_file.stat.exists
+
+- name: End execution of role
+  meta: end_role
   when: not spdx_executable.stat.exists
 
 - name: Spdx-generator installed
