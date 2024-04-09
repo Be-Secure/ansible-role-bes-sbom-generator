@@ -10,7 +10,7 @@
 
 - name: Display file existence status
   debug:
-    msg: "spdx-sbom-generator file exists: {{ sbom_file_path.stat.exists }}"
+    msg: "spdx-sbom-generator file exists at {{ sbom_file_path }}"
 
 - name: Exit if file exists
   fail:
