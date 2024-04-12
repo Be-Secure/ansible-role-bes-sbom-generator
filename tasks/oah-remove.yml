@@ -9,8 +9,7 @@
   register: sbom_file_path
 
 - name: Display file existence status
-  fail:
-    msg: "spdx-sbom-generator is not installed"
+  meta: end_host
   when: not sbom_file_path.stat.exists
 
 - name: Removing spdx-generator

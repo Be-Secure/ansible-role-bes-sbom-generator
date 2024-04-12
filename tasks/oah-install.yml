@@ -14,8 +14,7 @@
   when: sbom_file_path.stat.exists
 
 - name: Exit if file exists
-  fail:
-    msg: "spdx-sbom-generator file already exists. Exiting role execution."
+  meta: end_host
   when: sbom_file_path.stat.exists
 
 - name: Checking curl installation
