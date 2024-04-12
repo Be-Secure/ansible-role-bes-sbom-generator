@@ -14,7 +14,7 @@
   when: sbom_file_path.stat.exists
 
 - name: Exit if file exists
-  meta: end_host
+  meta: end_play
   when: sbom_file_path.stat.exists
 
 - name: Checking curl installation
