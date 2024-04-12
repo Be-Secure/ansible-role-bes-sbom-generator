@@ -27,4 +27,4 @@
         src: "{{ spdx_sbom_download_url }}/{{ spdx_sbom_version }}/spdx-sbom-generator-{{ spdx_sbom_version }}-linux-amd64.tar.gz"
         dest: "{{ spdx_sbom_path }}"
         remote_src: yes
-  when: sbom_file_path.stat.exists
+  when: not sbom_file_path.stat.exists
